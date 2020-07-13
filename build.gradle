@@ -13,6 +13,12 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
+repositories {
+    maven { // JEI
+        url "https://dvs1.progwml6.com/files/maven"
+    }
+}
+
 version = '1.0'
 group = 'com.kiwi.ambrosial' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'ambrosial'
@@ -109,6 +115,9 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    compileOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.6:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.1:7.0.0.6")
 
 }
 
