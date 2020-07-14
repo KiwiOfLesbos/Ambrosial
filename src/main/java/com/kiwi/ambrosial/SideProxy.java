@@ -26,7 +26,7 @@ public class SideProxy {
         CompostItems.register();
     }
 
-    private static void  serverStarting(FMLServerStartingEvent event){
+    private static void serverStarting(FMLServerStartingEvent event) {
 
     }
 
