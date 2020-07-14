@@ -1,8 +1,8 @@
 package com.kiwi.ambrosial;
 
-import com.kiwi.ambrosial.registry.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
@@ -17,15 +17,11 @@ public class Ambrosial {
 
     public static final String MODID = "ambrosial";
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final ItemGroup ITEM_GROUP = new ItemGroup("ambrosial") {
+
+    public static final ItemGroup TAB = new ItemGroup("ambrosialTab") {
+        @Override
         public ItemStack createIcon() {
-            return new ItemStack(ModItems.toast);
+            return new ItemStack(Items.APPLE);
         }
     };
-
-    @Nonnull
-    public static ResourceLocation getId(String path) {
-        return new ResourceLocation(MOD_ID, path);
-    }
-
 }

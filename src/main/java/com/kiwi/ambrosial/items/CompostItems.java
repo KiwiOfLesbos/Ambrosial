@@ -6,7 +6,7 @@ import net.minecraft.block.ComposterBlock;
 public class CompostItems {
 
     public static void register() {
-        ComposterBlock.CHANCES.put(ModItems.toast, 0.75f);
+        ComposterBlock.CHANCES.put(EdibleFoods.TOAST, 0.75f);
     }
 
 }

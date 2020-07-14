@@ -1,25 +1,19 @@
-package com.kiwi.ambrosial.setup;
+package com.kiwi.ambrosial;
 
-import com.kiwi.ambrosial.Ambrosial;
 import com.kiwi.ambrosial.items.CompostItems;
-import com.kiwi.ambrosial.config.Config;
 import com.kiwi.ambrosial.registry.ModItems;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
 
 public class SideProxy {
 
     SideProxy() {
         //ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "ambrosial.toml");
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 
         //Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("ambrosial.toml").toString());
 

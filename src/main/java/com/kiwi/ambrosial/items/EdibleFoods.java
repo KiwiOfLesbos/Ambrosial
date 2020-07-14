@@ -1,9 +1,10 @@
 package com.kiwi.ambrosial.items;
 
 import net.minecraft.item.Food;
+import net.minecraft.item.Item;
 
 public class EdibleFoods {
 
-    public static final Food TOAST = (new Food.Builder()).hunger(2).saturation(1.0f).build();
+    public static Item TOAST = new BaseFood("toast", 4, 0.5f);
 
 }
