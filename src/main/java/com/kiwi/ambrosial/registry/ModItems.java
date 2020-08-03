@@ -3,6 +3,7 @@ package com.kiwi.ambrosial.registry;
 import com.google.common.eventbus.Subscribe;
 import com.kiwi.ambrosial.Ambrosial;
 import com.kiwi.ambrosial.items.EdibleFoods;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,6 +17,11 @@ public class ModItems {
     @SubscribeEvent
     public static void onItemRegistry(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(EdibleFoods.TOAST);
+    }
+
+    @SubscribeEvent
+    public static void onBlockRegistry(RegistryEvent.Register<Block> event) {
+       // event.getRegistry().register();
     }
 
 }
