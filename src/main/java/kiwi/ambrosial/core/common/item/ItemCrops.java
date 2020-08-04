@@ -5,7 +5,8 @@ import net.minecraft.item.Item;
 public class ItemCrops {
 
     // Veggies
-    public static Item ONION = new ItemBaseCrop("onion", 2, 0.2f);
+    public static Item ONION = new ItemBaseFood("onion", 2, 0.3f);
+
 
     // Fruits
 
