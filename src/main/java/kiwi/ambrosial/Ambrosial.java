@@ -2,6 +2,8 @@ package kiwi.ambrosial;
 
 import kiwi.ambrosial.core.client.data.ModBlockStateProvider;
 import kiwi.ambrosial.core.client.data.ModItemModelProvider;
+import kiwi.ambrosial.core.common.data.ModLootTableProvider;
+import kiwi.ambrosial.core.common.data.ModRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -68,6 +70,11 @@ public class Ambrosial {
             ModBlockStateProvider blockstates = new ModBlockStateProvider(gen, event.getExistingFileHelper());
             gen.addProvider(blockstates);
             gen.addProvider(new ModItemModelProvider(gen, blockstates.getExistingFileHelper()));
+        }
+
+        if (event.includeServer()) {
+            gen.addProvider(new ModRecipeProvider(gen));
+            gen.addProvider(new ModLootTableProvider(gen));
         }
 
     }
