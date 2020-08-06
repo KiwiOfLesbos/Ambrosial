@@ -1,8 +1,8 @@
-package kiwi.ambrosial.core.client.data;
+package kiwi.ambrosial.data;
 
 import kiwi.ambrosial.Ambrosial;
-import kiwi.ambrosial.core.common.item.ItemCrops;
-import kiwi.ambrosial.core.common.item.ItemMeals;
+import kiwi.ambrosial.init.ModItems;
+import kiwi.ambrosial.items.FoodsList;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -10,6 +10,8 @@ import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
+
+import java.util.function.Supplier;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
@@ -26,7 +28,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
 
         // Veggies
-        generated(ItemCrops.ONION);
+        generated(ModItems.ONION);
 
         // Fruits
 
@@ -41,25 +43,24 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
         // Meals
-        generated(ItemMeals.STEAK_SANDWICH);
 
         // Hearty Meals
 
     }
 
-    private String name(IItemProvider item) {
-        return item.asItem().getRegistryName().getPath();
+    private String name(Supplier<? extends IItemProvider> item) {
+        return item.get().asItem().getRegistryName().getPath();
     }
 
-    private ResourceLocation itemTexture(IItemProvider item) {
+    private ResourceLocation itemTexture(Supplier<? extends IItemProvider> item) {
         return modLoc("item/" + name(item));
     }
 
-    private ItemModelBuilder generated(IItemProvider item) {
+    private ItemModelBuilder generated(Supplier<? extends IItemProvider> item) {
         return generated(item, itemTexture(item));
     }
 
-    private ItemModelBuilder generated(IItemProvider item, ResourceLocation texture) {
+    private ItemModelBuilder generated(Supplier<? extends IItemProvider> item, ResourceLocation texture) {
         return getBuilder(name(item)).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", texture);
     }
 

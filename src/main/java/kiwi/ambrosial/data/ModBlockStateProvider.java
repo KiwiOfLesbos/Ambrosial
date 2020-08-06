@@ -1,4 +1,4 @@
-package kiwi.ambrosial.core.client.data;
+package kiwi.ambrosial.data;
 
 import kiwi.ambrosial.Ambrosial;
 import net.minecraft.block.Block;

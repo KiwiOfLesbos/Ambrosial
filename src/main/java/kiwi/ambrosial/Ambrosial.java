@@ -1,13 +1,12 @@
 package kiwi.ambrosial;
 
-import kiwi.ambrosial.core.client.data.ModBlockStateProvider;
-import kiwi.ambrosial.core.client.data.ModItemModelProvider;
-import kiwi.ambrosial.core.common.data.ModLootTableProvider;
-import kiwi.ambrosial.core.common.data.ModRecipeProvider;
+import kiwi.ambrosial.data.ModBlockStateProvider;
+import kiwi.ambrosial.data.ModItemModelProvider;
+import kiwi.ambrosial.data.ModLootTableProvider;
+import kiwi.ambrosial.data.ModRecipeProvider;
+import kiwi.ambrosial.init.ModBlocks;
+import kiwi.ambrosial.init.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -21,18 +20,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(Ambrosial.MODID)
+@Mod.EventBusSubscriber(modid = Ambrosial.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Ambrosial {
 
     public static final String MODID = "ambrosial";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final ItemGroup TAB = new ItemGroup("ambrosialTab") {
-        @Override
-        public ItemStack createIcon() {
-
-            return new ItemStack(Items.BEETROOT);
-        }
-    };
+    public static final AmbrosialItemGroup ITEM_GROUP = new AmbrosialItemGroup(Ambrosial.MODID);
 
     public Ambrosial() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -43,6 +37,9 @@ public class Ambrosial {
 
         modBus.addListener(this::imcEnqueue);
         modBus.addListener(this::imcProcess);
+
+        ModItems.ITEMS.register(modBus);
+        ModBlocks.BLOCKS.register(modBus);
 
         MinecraftForge.EVENT_BUS.addListener(this::onServerStarting);
     }
